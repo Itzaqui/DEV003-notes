@@ -1,0 +1,74 @@
+.header {
+    display: flex;
+    background-color: #CCA0FF;
+    height: 15vh;
+}
+.logout {
+    height: 3em;
+    width: 2em;
+    font-size: 2.5em;
+    background-color: transparent;
+    border: none;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.nameUser {
+    display: flex;
+    margin-left: 2em;
+    font-weight: bold;
+    font-size: 1.8em;
+    color: #FFFFFF;
+}
+.titulo {
+    display: flex;
+    margin-top: 1em;
+    background-color: beige;
+    border-radius: 0.8rem;
+    padding: 0.5rem 1.25rem;
+    flex-direction: column;
+    font-size: 1.4em;
+    color: #9B5DE5;
+    font-weight: bold;
+    width: 15em;
+    height: 1em;
+    border: transparent;
+}
+.title {
+    display: flex;
+    justify-content: center;
+    color: #9B5DE5;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.containerNote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background-color: beige;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 0.8rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 1em;
+    width: 22em;   
+    height: 15em;
+}
+.notas {
+    display: flex;
+    margin-bottom: 1.5em;
+    background-color: beige;
+    border-radius: 0.8rem;
+    padding: 0.5rem 1.25rem;
+    flex-direction: column;
+    font-size: 1.4em;
+    color: #9B5DE5;
+    font-weight: bold;
+    width: 15em;
+    height: 6em;
+    border: transparent;
+}

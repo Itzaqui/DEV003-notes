@@ -1,0 +1,77 @@
+.correo {
+    display: flex;
+    width: 30em;
+    height: 2.5em;
+    padding: 0.5em 0.5em;
+    border-radius: 0.5em;
+    background-color:  rgba(155, 93, 229, 0.2);
+    border: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #9B5DE5;
+    justify-content: center;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+  }
+
+  .registro {
+    display: flex;
+    width: 28em;
+    height: 2.5em;
+    padding-top: 1.5em;
+    padding-bottom: 1.9em;
+    border-radius: 0.5em;
+    background-color:  rgba(155, 93, 229, 0.8);
+    border: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1em;
+    justify-content: center;
+    margin-bottom: 1em;
+    margin-top: 0.5em;  
+}
+
+.termino {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5em;
+    font-weight: bold;
+    color: #9B5DE5;
+    font-size: 19px;
+   
+}
+
+.terminos {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5em;
+    font-weight: bold;
+    color: #9B5DE5;
+    font-size: 19px;
+    margin-bottom: 1em;
+}
+
+.containerGoogle {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .googleLogo {
+    display: flex;
+    justify-content: center;
+    margin-right: 1em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
+  .google {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5em;
+    font-weight: bold;
+    color: #9B5DE5;
+    font-size: 19px;
+    margin-bottom: 1em;
+    margin-top: 2em;
+
+  }
