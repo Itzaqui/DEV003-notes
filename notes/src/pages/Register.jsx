@@ -2,20 +2,22 @@ import Image from 'next/image'
 import styles from '../styles/Register.module.css'
 import { useState } from 'react'
 import registerUser from '@/functions/registerUser'
+import GoogleLoginButton from '@/functions/loginWithGoogle'
+import { useRouter } from 'next/router'
+
 
 
 export default function Register() {
-  const [isRegistering, setIsRegistering] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [userName, setUserName] = useState('');
+  console.log([email, password, userName])
 
-  async function submitRegister(e) {
+  const submitRegister = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    // const userName = e.target.userName.value;
-    const password = e.target.password.value;
-    if(isRegistering) {
-      await registerUser(email, password);
-    }
-  }
+    registerUser(email, password);
+  };
+
   return (
     <>
     <Image alt="Fondo de Login"
@@ -40,23 +42,16 @@ export default function Register() {
      
     }}>
       
-      <form className='flex flex-col' onSubmit={submitRegister}>
-      <div className={styles.containerGoogle}>
-      <Image
-                src="/images/logo-google.png"
-                alt="Google Logo"
-                className={styles.googleLogo}
-                width={35}
-                height={35}
-              />
-      <h1 className={styles.google}>Inicia sesión con Google</h1>
-      </div>
-      <input type='text' className={styles.correo} id='email' placeholder='Correo electrónico' />
-      <input type='text'className={styles.correo} id='userName'placeholder='Nombre de usuario' />
-      <input type='password' className={styles.correo} id='password' placeholder='Contraseña' />
+      <form className='flex flex-col' class='form' onSubmit={submitRegister} >
+      <GoogleLoginButton/>
+      <input type='email' className={styles.correo} value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Correo electrónico' />
+      <input type='text'className={styles.correo} value={userName} onChange={(e) => setUserName(e.target.value)} placeholder='Nombre de usuario' />
+      <input type='password' className={styles.correo} value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Contraseña' />
       <h1 className={styles.termino}>Al crear una cuenta de Note me, aceptas nuestros</h1>
       <h1 className={styles.terminos}>Términos de servicio y Política de Privacidad.</h1>
-      <button type='submit' className={styles.registro} onClick={() => setIsRegistering(true)}>REGISTRARTE</button>
+      
+      <button type="submit" className={styles.registro} >REGISTRARTE</button>
+    
       </form>
       </div>
       </div>

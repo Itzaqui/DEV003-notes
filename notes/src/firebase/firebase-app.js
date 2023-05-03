@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
+import { getFirestore, collection, addDoc, doc, updateDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC-_1RFqPUaWGPaCR8gKxMRF8IOB6hxGMQ",
@@ -14,4 +15,9 @@ const firebaseConfig = {
   // Initialize Firebase
 export const firebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(firebaseApp)
+export const db = getFirestore(firebaseApp);
+
+export const createNote = (data) => addDoc(collection(db, 'notes'), data);
+
+export const updateNote = (id, newFields) => updateDoc(doc(db, 'notes', id), { ...newFields });
 

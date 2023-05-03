@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import '../../public/fonts.css';
 import { useState } from 'react'
 import Wall from './Wall'
-import Login from './Login'
+import Login from '.'
 import Register from './Register';
 import { auth } from '../firebase/firebase-app'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -22,7 +22,7 @@ import { onAuthStateChanged } from 'firebase/auth'
       setUser(null)
     }
   })
-  return user ? <Wall user={user} /> : <Login/> || <Register/>
+  return user ? <Wall user={user} /> : <Login/>
  
 }
 

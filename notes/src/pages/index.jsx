@@ -2,22 +2,21 @@ import styles from '../styles/Login.module.css'
 import Image from 'next/image'
 import GoogleLoginButton from '../functions/loginWithGoogle'
 import loginUser from '@/functions/loginUser'
-import Register from './Register'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+
 
 export default function Login() {
-  const [showRegister, setShowRegister] = useState(false);
+  const router = useRouter()
   const [isLoggingIn, setIsLoggingIn] = useState(false)
 
   async function submitHandler(e) {
     e.preventDefault();
-    
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
-    if(isLoggingIn) {
+    // console.log(email, password);
       await loginUser(email, password);
-    }
+      router.push('/Wall')
   }
   
   return (
@@ -47,11 +46,10 @@ export default function Login() {
       <input type='password' className={styles.correo} id='password' placeholder='Contraseña' />
       <button type='submit' onClick={() => setIsLoggingIn(true)} className={styles.inicio}>INICIAR SESIÓN</button>
       
-      {showRegister ? (
-        <Register />
-      ) : (
-      <button type='button' onClick={() => setShowRegister(true)} className={styles.registro}>REGISTRARSE</button>
-      )}
+  
+      <button type='button' onClick={()=>router.push('/Register')} className={styles.registro}>REGISTRARSE</button>
+     
+      
       
       <GoogleLoginButton />
 
