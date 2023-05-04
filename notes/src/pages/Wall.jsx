@@ -59,8 +59,9 @@ export default function Wall() {
     </form>
     </div>
         </div>
+        <div className={styles.containerMain}>
         <div className={styles.containerSavedNote}>
-          <div className={styles.savedNote}>
+          
           {notas.map((note) => (
                <div key={note.id} className={styles.savedNota} >
                 <div className='flex flex-col'>
@@ -70,8 +71,10 @@ export default function Wall() {
                 <button className={styles.delete} ><FontAwesomeIcon icon={faTrash} /></button>
                 </div> 
                </div> 
+               
             ))}
 
+          
           </div>
           </div>
       
