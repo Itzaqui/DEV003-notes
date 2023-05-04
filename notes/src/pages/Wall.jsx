@@ -4,7 +4,7 @@ import { faArrowRightFromBracket, faFloppyDisk, faPenToSquare, faTrash } from '@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {useState, useEffect} from 'react'
 import { auth, createNote, updateNote, db } from "@/firebase/firebase-app";
-import { Timestamp, collection, doc, getDocs } from 'firebase/firestore'
+import { Timestamp, collection, doc, getDocs, deleteDoc } from 'firebase/firestore'
 
 
 
@@ -24,9 +24,9 @@ export default function Wall() {
   useEffect(() => {
     const getNote = async() => {
       try {
-        const querySnatshot = await getDocs(collection(db, 'notes'))
+        const loadNote = await getDocs(collection(db, 'notes'))
         const docs = []
-        querySnatshot.forEach((doc) => {
+        loadNote.forEach((doc) => {
           docs.push({...doc.data(), id: doc.id})
         })
         setNotas(docs)
@@ -37,6 +37,10 @@ export default function Wall() {
     } 
     getNote()
   }, [notas]);
+
+  const deleteNote = async(id) => {
+    await deleteDoc(doc(db, 'notes', id))
+  }
 
     return(
       <>
@@ -68,7 +72,7 @@ export default function Wall() {
                 <div className={styles.savedTitle}>{note.title}</div>
                 <div className={styles.savedContent}>{note.content}</div>
                 <button className={styles.savedButton} ><FontAwesomeIcon icon={faPenToSquare} /></button>
-                <button className={styles.delete} ><FontAwesomeIcon icon={faTrash} /></button>
+                <button className={styles.delete} ><FontAwesomeIcon icon={faTrash} onClick={()=>deleteNote(note.id)}/></button>
                 </div> 
                </div> 
                
