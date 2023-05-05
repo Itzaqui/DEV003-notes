@@ -2,16 +2,18 @@ import { auth } from '../firebase/firebase-app';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import styles from '../styles/Login.module.css'
 import Image from 'next/image'
-
+import { useRouter } from 'next/router'
 
 
 export default function GoogleLoginButton() {
+  const router = useRouter()
   async function loginWithGoogle(e) {
     e.preventDefault();
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       console.log(result);
+      router.push('/Wall')
     }  catch(error) {
       console.log(error);
     }

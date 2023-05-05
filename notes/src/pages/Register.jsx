@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 
 
 export default function Register() {
+  const router = useRouter()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userName, setUserName] = useState('');
@@ -42,7 +43,7 @@ export default function Register() {
      
     }}>
       
-      <form className='flex flex-col' class='form' onSubmit={submitRegister} >
+      <form className='flex flex-col' onSubmit={submitRegister} >
       <GoogleLoginButton/>
       <input type='email' className={styles.correo} value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Correo electrónico' />
       <input type='text'className={styles.correo} value={userName} onChange={(e) => setUserName(e.target.value)} placeholder='Nombre de usuario' />
@@ -50,7 +51,7 @@ export default function Register() {
       <h1 className={styles.termino}>Al crear una cuenta de Note me, aceptas nuestros</h1>
       <h1 className={styles.terminos}>Términos de servicio y Política de Privacidad.</h1>
       
-      <button type="submit" className={styles.registro} >REGISTRARTE</button>
+      <button type="submit" className={styles.registro} onClick={()=>router.push('/')}  >REGISTRARTE</button>
     
       </form>
       </div>
