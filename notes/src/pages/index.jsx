@@ -21,40 +21,47 @@ export default function Login() {
   
   return (
     <>
-    <Image alt='Fondo de Login'
-      src='/images/notes-login.png'
-      width={700}
-      height={480}
-      sizes='100vw'
-      style={{
-        zIndex: -1,
-        position: 'fixed',
-        width: '100%',
-        height: '100vh',
-      }}></Image>
-      
     <div style={{
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       width: '100%',  
-      height: '100vh'
-     
-    }}>            
+      height: '100vh',
+      backgroundColor: '#FBF4E5'
+     }}> 
+
+    <Image
+              src='/images/note-top.png'
+              alt='Flower Top'
+              className={styles.flowerTop}
+              width={260}
+              height={260}
+              
+            />
+              
     <form className='flex flex-col' onSubmit={submitHandler}>
+    <h1 className={styles.mainTitle}>MY NOTES</h1>
       <input type='text' className={styles.correo} id='email' placeholder='Correo' />
       <input type='password' className={styles.correo} id='password' placeholder='Contraseña' />
       <button type='submit' onClick={() => setIsLoggingIn(true)} className={styles.inicio}>INICIAR SESIÓN</button>
-      
-  
       <button type='button' onClick={()=>router.push('/Register')} className={styles.registro}>REGISTRARSE</button>
      
       
-      
       <GoogleLoginButton />
 
+      
     </form>
+
+    <Image
+    src="/images/note-bottom.png"
+    alt="Flower Bottom"
+    className={styles.flowerBottom}
+    width={300}
+    height={300}
+    />
+    
     </div> 
+    
     </>
    
 

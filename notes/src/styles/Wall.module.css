@@ -87,7 +87,7 @@
     background-color: transparent;
     border: none;
     margin-bottom: 0.5em;
-    margin-left: 80%;
+    margin-left: 85%;
 
 }
 .containerMain {
@@ -123,6 +123,7 @@
     height: 2em;
     color:#9B5DE5;
     font-weight: bold;
+    font-size: larger;
 
 }
 .savedContent {

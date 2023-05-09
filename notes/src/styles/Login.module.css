@@ -1,6 +1,11 @@
-.container {
+
+  .mainTitle {
+    font-family: 'Lemon Tuesday', sans-serif;
+    font-size: 6em;
     display: flex;
     justify-content: center;
+    margin-bottom: 0.5em;
+    color: #9B5DE5;                                              
   }
   
   .form {
@@ -47,6 +52,11 @@
     margin-bottom: 1em;
     margin-top: 0.5em;   
   }
+
+  .inicio:hover {
+    background-color:  rgba(155, 93, 229, 0.6);
+    cursor: pointer;
+  }
   
   .registro {
       display: flex;
@@ -63,6 +73,10 @@
       justify-content: center;
       margin-bottom: 1em;
       margin-top: 0.5em;  
+  }
+  .registro:hover {
+    background-color:  rgba(155, 93, 229, 0.6);
+    cursor: pointer;
   }
 
   .containerGoogle {
@@ -89,5 +103,20 @@
     background-color: transparent;
     border: none;
   }
+  .buttonGoogle:hover {
+    cursor: pointer;
+  }
  
-
+.flowerBottom {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+}
+.flowerTop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+ 

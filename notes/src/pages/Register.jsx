@@ -12,7 +12,7 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userName, setUserName] = useState('');
-  console.log([email, password, userName])
+  // console.log([email, password, userName])
 
   const submitRegister = (e) => {
     e.preventDefault();
@@ -21,17 +21,6 @@ export default function Register() {
 
   return (
     <>
-    <Image alt="Fondo de Login"
-      src='/images/notes-login.png'
-      width={700}
-      height={480}
-      sizes="100vw"
-      style={{
-        zIndex: -1,
-        position: 'fixed',
-        width: '100%',
-        height: '100vh',
-      }}></Image>
   <div>
     
       <div style={{
@@ -39,11 +28,20 @@ export default function Register() {
       justifyContent: 'center',
       alignItems: 'center',
       width: '100%',
-      height: '100vh'
+      height: '100vh',
+      backgroundColor: '#FBF4E5'
      
     }}>
+      <Image
+              src='/images/note-top.png'
+              alt='Flower Top'
+              className={styles.flowerTop}
+              width={260}
+              height={260}
+              />
       
       <form className='flex flex-col' onSubmit={submitRegister} >
+      <h1 className={styles.mainTitle}>MY NOTES</h1>
       <GoogleLoginButton/>
       <input type='email' className={styles.correo} value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Correo electrónico' />
       <input type='text'className={styles.correo} value={userName} onChange={(e) => setUserName(e.target.value)} placeholder='Nombre de usuario' />
@@ -54,6 +52,13 @@ export default function Register() {
       <button type="submit" className={styles.registro} onClick={()=>router.push('/')}  >REGISTRARTE</button>
     
       </form>
+      <Image
+    src="/images/note-bottom.png"
+    alt="Flower Bottom"
+    className={styles.flowerBottom}
+    width={300}
+    height={300}
+    />
       </div>
       </div>
   </>

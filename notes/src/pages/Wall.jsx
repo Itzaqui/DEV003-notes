@@ -4,8 +4,8 @@ import { faArrowRightFromBracket, faFloppyDisk, faPenToSquare, faTrash } from '@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/router'
 import {useState, useEffect} from 'react'
-import { db } from "@/firebase/firebase-app";
-import { collection, doc, getDocs, deleteDoc, getDoc, addDoc, setDoc } from 'firebase/firestore'
+import { db, auth, orderedNote } from "@/firebase/firebase-app";
+import { collection, doc, getDocs, deleteDoc, getDoc, addDoc, setDoc, Timestamp } from 'firebase/firestore'
 
 
 
@@ -13,14 +13,17 @@ import { collection, doc, getDocs, deleteDoc, getDoc, addDoc, setDoc } from 'fir
 export default function Wall() {
   const router = useRouter()
   
+  
   const objNote = {
     title:'',
     content:''
+
   }
 
   const [nota, setNota] = useState(objNote)
   const [notas, setNotas] = useState([])
   const [noteId, setNoteId] = useState('')
+  const [userName, setUserName] = useState('');
 
   const ValueTextArea = (e) => {
     const {name, value} = e.target;
@@ -60,7 +63,7 @@ export default function Wall() {
         console.log(error)
       }
     } 
-    getNote()
+    getNote(orderedNote)
   }, [notas]);
 
   const handleLogout = async (e) => {
@@ -88,12 +91,20 @@ export default function Wall() {
     }
   }, [noteId])
 
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if(user) {
+        setUserName(auth.currentUser.displayName)
+      }
+    })
+  }, [])
+
     return(
       <>
      <div >
           <div className={styles.header} >
             <div className={styles.heading}>
-            <h1 className={styles.nameUser}>Hola User</h1>
+            <h1 className={styles.nameUser}>Hola {userName}</h1>
             <button onClick={ handleLogout } className= {styles.logout}><FontAwesomeIcon icon={faArrowRightFromBracket} /></button>
             </div>
           </div>
@@ -117,6 +128,7 @@ export default function Wall() {
               <div className='flex flex-col'>
               <div className={styles.savedTitle}>{note.title}</div>
               <div className={styles.savedContent}>{note.content}</div>
+              <p></p>
               <button className={styles.savedButton} ><FontAwesomeIcon icon={faPenToSquare} onClick={()=>setNoteId(note.id)} /></button>
               <button className={styles.delete} ><FontAwesomeIcon icon={faTrash} onClick={()=>deleteNote(note.id)}/></button>
               </div>
