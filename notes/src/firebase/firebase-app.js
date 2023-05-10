@@ -18,6 +18,6 @@ export const auth = getAuth(firebaseApp)
 export const db = getFirestore(firebaseApp);
 
 export const orderedNote = (callback) => {
-  const q = query(collection(db, 'post'), orderBy('time', 'desc'));
+  const q = query(collection(db, 'notes'), orderBy('time', 'desc'));
   onSnapshot(q, callback);
 };

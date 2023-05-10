@@ -9,15 +9,13 @@ import { collection, doc, getDocs, deleteDoc, getDoc, addDoc, setDoc, Timestamp 
 
 
 
-
 export default function Wall() {
   const router = useRouter()
   
-  
   const objNote = {
     title:'',
-    content:''
-
+    content:'',
+    time: Timestamp.fromDate(new Date())
   }
 
   const [nota, setNota] = useState(objNote)
@@ -63,7 +61,7 @@ export default function Wall() {
         console.log(error)
       }
     } 
-    getNote(orderedNote)
+    orderedNote(getNote)
   }, [notas]);
 
   const handleLogout = async (e) => {
@@ -128,9 +126,10 @@ export default function Wall() {
               <div className='flex flex-col'>
               <div className={styles.savedTitle}>{note.title}</div>
               <div className={styles.savedContent}>{note.content}</div>
-              <p></p>
+              <p className={styles.time} >{note.time.toDate().toLocaleString()}</p>
               <button className={styles.savedButton} ><FontAwesomeIcon icon={faPenToSquare} onClick={()=>setNoteId(note.id)} /></button>
               <button className={styles.delete} ><FontAwesomeIcon icon={faTrash} onClick={()=>deleteNote(note.id)}/></button>
+              
               </div>
               </div>
             ))
