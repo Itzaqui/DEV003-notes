@@ -2,13 +2,12 @@ import styles from '../styles/Login.module.css'
 import Image from 'next/image'
 import GoogleLoginButton from '../functions/loginWithGoogle'
 import loginUser from '@/functions/loginUser'
-import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 
 export default function Login() {
   const router = useRouter()
-  const [isLoggingIn, setIsLoggingIn] = useState(false)
+  
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -43,7 +42,7 @@ export default function Login() {
     <h1 className={styles.mainTitle}>MY NOTES</h1>
       <input type='text' className={styles.correo} id='email' placeholder='Correo' />
       <input type='password' className={styles.correo} id='password' placeholder='Contraseña' />
-      <button type='submit' onClick={() => setIsLoggingIn(true)} className={styles.inicio}>INICIAR SESIÓN</button>
+      <button type='submit' className={styles.inicio}>INICIAR SESIÓN</button>
       <button type='button' onClick={()=>router.push('/Register')} className={styles.registro}>REGISTRARSE</button>
      
       

@@ -9,6 +9,7 @@ import { collection, doc, getDocs, deleteDoc, getDoc, addDoc, setDoc, Timestamp 
 
 
 
+
 export default function Wall() {
   const router = useRouter()
   
@@ -23,13 +24,15 @@ export default function Wall() {
   const [noteId, setNoteId] = useState('')
   const [userName, setUserName] = useState('');
 
+// capturar los inputs
   const ValueTextArea = (e) => {
     const {name, value} = e.target;
     setNota({...nota, [name]:value})
   }
-
+// guardar y actualizar info en firebase
   const createNote = async(e) => {
     e.preventDefault()
+    // console.log(nota)
     if(noteId ==='') {
       try {
         await addDoc(collection(db, 'notes'), {
@@ -46,7 +49,7 @@ export default function Wall() {
     setNota({...objNote})
     setNoteId('')
   }
-
+// funcion para renderizar las notas
   useEffect(() => {
     const getNote = async() => {
       try {
@@ -55,15 +58,15 @@ export default function Wall() {
         loadNote.forEach((doc) => {
           docs.push({...doc.data(), id: doc.id})
         })
-        setNotas(docs)
+        setNotas(docs)    
 
       } catch(error) {
         console.log(error)
       }
     } 
-    orderedNote(getNote)
+    getNote(orderedNote)
   }, [notas]);
-
+ 
   const handleLogout = async (e) => {
     await logoutUser()
     router.push('/')
@@ -110,11 +113,11 @@ export default function Wall() {
           <div className={styles.note}>
          <form className='flex flex-col' onSubmit={createNote}>
        <h1 className={styles.title}>Agrega una nota</h1>
-        <div > 
+        
           <textarea name='title' value={nota.title} onChange={ValueTextArea} className={styles.titulo} placeholder="Título"  maxLength='50'></textarea>
           <textarea name='content' value={nota.content} onChange={ValueTextArea} className={styles.notas} placeholder="Nota"  maxLength='2000'></textarea>
           <button type="submit"  className= {styles.save}><FontAwesomeIcon icon={faFloppyDisk} /></button>  
-        </div>
+        
     </form>
     </div>
         </div>
